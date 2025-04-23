@@ -5,27 +5,13 @@ import DefaultLayout from "./layouts/DefaultLayout"
 import SinglePost from "./pages/SinglePost"
 import NotFound from "./pages/NotFound"
 import PostsPage from "./pages/PostsPage"
-import PostContext from "./contexts/PostsContext"
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { PostsProvider } from "./contexts/PostsContext"
 
 function App() {
 
-  const urlApi = 'https://jsonplaceholder.typicode.com/posts';
-  const [postList, setPostList] = useState([]);
-
-  useEffect(() => {
-    console.log('Ho caricato la pagina')
-
-    axios.get(urlApi)
-      .then(res => setPostList(res.data))
-      .catch(err => console.log(err))
-
-  }, [])
-
   return (
     <>
-      <PostContext.Provider value={{ postList, setPostList }}>
+      <PostsProvider>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>
@@ -38,7 +24,7 @@ function App() {
           </Routes>
 
         </BrowserRouter>
-      </PostContext.Provider>
+      </PostsProvider>
     </>
   )
 }
