@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import PostContext from "../contexts/PostsContext";
 import { Link } from "react-router-dom";
 
 function PostsList() {
 
-    const urlApi = 'https://jsonplaceholder.typicode.com/posts';
-    const [postList, setPostList] = useState([]);
-
-    useEffect(() => {
-        console.log('Ho caricato la pagina')
-
-        axios.get(urlApi)
-            .then(res => setPostList(res.data))
-            .catch(err => console.log(err))
-
-    }, [])
+    const { postList } = useContext(PostContext);
 
     return (<>
         <ul>
