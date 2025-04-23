@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
+//vado ad importare l'hook creato usePosts
 import { usePosts } from "../contexts/PostsContext";
+
+//importo il componente PostCard
+import PostCard from "../components/PostCard";
 
 function PostsList() {
 
@@ -7,11 +10,7 @@ function PostsList() {
 
     return (<>
         <ul>
-            {postList.map(post => <li key={post.id}>
-                <h3>{post.title}</h3>
-                <Link to={`/post-list/${post.id}`}>Più info...</Link>
-            </li>
-            )}
+            {postList.map(post => <PostCard key={post.id} post={post} />)}
         </ul>
     </>)
 }
