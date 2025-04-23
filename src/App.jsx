@@ -6,25 +6,28 @@ import SinglePost from "./pages/SinglePost"
 import NotFound from "./pages/NotFound"
 import PostsPage from "./pages/PostsPage"
 import { PostsProvider } from "./contexts/PostsContext"
+import { AlertProvider } from "./contexts/AlertContext"
 
 function App() {
 
   return (
     <>
-      <PostsProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<DefaultLayout />}>
-              <Route path='/' element={<Home />} />
-              <Route path='/post-list' element={<PostsPage />} />
-              <Route path='/post-list/:id' element={<SinglePost />} />
-              <Route path='/chi-siamo' element={<ChiSiamo />} />
-              <Route path='*' element={<NotFound />} />
-            </Route>
-          </Routes>
+      <AlertProvider>
+        <PostsProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<DefaultLayout />}>
+                <Route path='/' element={<Home />} />
+                <Route path='/post-list' element={<PostsPage />} />
+                <Route path='/post-list/:id' element={<SinglePost />} />
+                <Route path='/chi-siamo' element={<ChiSiamo />} />
+                <Route path='*' element={<NotFound />} />
+              </Route>
+            </Routes>
 
-        </BrowserRouter>
-      </PostsProvider>
+          </BrowserRouter>
+        </PostsProvider>
+      </AlertProvider>
     </>
   )
 }
