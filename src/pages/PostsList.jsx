@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function PostList() {
+function PostsList() {
 
     const urlApi = 'https://jsonplaceholder.typicode.com/posts';
     const [postList, setPostList] = useState([]);
@@ -17,7 +17,6 @@ function PostList() {
     }, [])
 
     return (<>
-        <h2>Lista dei posts</h2>
         <ul>
             {postList.map(post => <li key={post.id}>
                 <h3>{post.title}</h3>
@@ -28,4 +27,4 @@ function PostList() {
     </>)
 }
 
-export default PostList;
+export default PostsList;
