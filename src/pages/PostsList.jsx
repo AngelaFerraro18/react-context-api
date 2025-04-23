@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import PostContext from "../contexts/PostsContext";
 import { Link } from "react-router-dom";
+import { usePosts } from "../contexts/PostsContext";
 
 function PostsList() {
 
-    const { postList } = useContext(PostContext);
+    const { postList } = usePosts();
 
     return (<>
         <ul>
